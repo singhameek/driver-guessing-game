@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 
 <html>
-    <body class = "body">
-        <link rel=""stylesheet" href=""styles.css">
+    <head>
+        <link rel="stylesheet" href="styles.css">
         <title class = "title">Guess that F1 Driver!</title>
-        <h3 class = "subheader">In this game, you need to guess the current F1 driver by their driver number!</p>
+    </head>
+    <body class = "body">
+        <h1 class = "title">Guess that F1 driver!</h1>
+        <h3 class = "subheader">In this game, you need to guess the current F1 driver by their driver number!</h3>
+        <p class = "text">You'll be presented a driver number, and four choices from which you must select the driver.</p>
 
+        <div id="number" class="number">?</div>
+        <div class="choices">
+            <button class="choice" id="1"></button>
+            <button class="choice" id="2"></button>
+            <button class="choice" id="3"></button>
+            <button class="choice" id="4"></button>
+        </div>
 
-
+        <p id="result" class=""text></p>
+        <script src="script.js"></script>
     </body>
 </html>
