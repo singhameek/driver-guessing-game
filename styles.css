@@ -34,10 +34,14 @@
 
 .choices {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
     max-width: 300px;
     margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 
@@ -50,7 +54,7 @@
     font-family: system-ui, sans-serif;
     cursor: pointer;
     border-radius: 5px;
-    width: 200px;
+    width: 300px;
 }
 
 .choice:hover {
