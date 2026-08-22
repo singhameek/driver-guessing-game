@@ -23,34 +23,41 @@ const f1Drivers = [
     { number: 87, name: "Oliver Bearman" }
 ];
 
+function loadRound(){
+    document.getElementById("result").innerText = "";
+    const correctDriver = f1Drivers[Math.floor(Math.random() * f1Drivers.length)];
 
-const correctDriver = f1Drivers[Math.floor(Math.random() * f1Drivers.length)];
+    document.getElementById("number").innerText = correctDriver.number;
 
-document.getElementById("number").innerText = correctDriver.number;
+    let choices = [correctDriver];
+    while (choices.length < 4) {
+        let randomDriver = f1Drivers[Math.floor(Math.random() * f1Drivers.length)];
+        if (!choices.some(d => d.number === randomDriver.number)) {
+            choices.push(randomDriver);
+        }
+    }
 
-let choices = [correctDriver];
-while (choices.length < 4) {
-    let randomDriver = f1Drivers[Math.floor(Math.random() * f1Drivers.length)];
-    if (!choices.some(d => d.number === randomDriver.number)) {
-        choices.push(randomDriver);
+    choices.sort(() => Math.random() - 0.5);
+
+    for (let i = 0; i < 4; i++) {
+        let btn = document.getElementById(`btn-${i}`);
+        btn.innerText = choices[i].name;
+
+        btn.onclick = function() {
+            let message = document.getElementById("result");
+
+           if (choices[i].number === correctDriver.number) {
+               message.innerText = "Correct!";
+               message.style.color = "green";
+           } else {
+               message.innerText = `Wrong. It was ${correctDriver.name}.`;
+               message.style.color = "red";
+           }
+
+
+           setTimeout(loadRound, 1500);
+       };
     }
 }
 
-choices.sort(() => Math.random() - 0.5);
-
-for (let i = 0; i < 4; i++) {
-    let btn = document.getElementById(`btn-${i}`);
-    btn.innerText = choices[i].name;
-
-    btn.onclick = function() {
-        let message = document.getElementById("result");
-
-        if (choices[i].number === correctDriver.number) {
-            message.innerText = "Correct!";
-            message.style.color = "green";
-        } else {
-            message.innerText = `Wrong. It was ${correctDriver.name}.`;
-            message.style.color = "red";
-        }
-    };
-}
+loadRound()
